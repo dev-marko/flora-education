@@ -1,40 +1,25 @@
 import './App.css';
-import { Router } from 'react-router-dom';
-import { Component } from 'react';
-import FloraService from '../../repository/floraEducationRepository'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Home from '../Home/Home'
+import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
+import PlantCategories from '../Plants/PlantCategories';
 
-class App extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      plants: [],
-      categories: []
-    }
-  }
-
-  render () {
-    const {categories} = this.state.categories
-    return (
-      <div>
-        Categories:
-        {categories}
-      </div>
-    );
-  }
-
-  loadCategories = () => {
-    FloraService.fetchPlantCategories()
-    .then((data) => {
-      this.setState({
-        categories : data.data
-      })
-    })
-  }
-
-  componentDidMount() {
-    this.loadCategories();
-  }
+function App() {
+  return (
+    <Router>
+      <main>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Navigate replace to="/home"/>} />
+          <Route path='/home' element={<Home/>} />
+          <Route path='/plant-categories' element={<PlantCategories/>}/>
+        </Routes>
+        <Footer />
+      </main>
+    </Router>
+  );
 }
 
 export default App;
