@@ -25,10 +25,10 @@ function Navbar() {
                                 <a className="nav-link" href="#">Контакт</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Најава</a>
+                                <a className="nav-link" href="/login">Најава</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Регистрација</a>
+                                <a className="nav-link" href="/register">Регистрација</a>
                             </li>
                         </ul>
                     </div>

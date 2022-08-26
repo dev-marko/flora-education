@@ -4,6 +4,9 @@ import Home from '../Home/Home'
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import PlantCategories from '../Plants/PlantCategories';
+import Plants from '../Plants/Plants';
+import LoginForm from '../Auth/LoginForm';
+import RegisterForm from '../Auth/RegisterForm';
 
 
 function App() {
@@ -15,6 +18,9 @@ function App() {
           <Route path="/" element={<Navigate replace to="/home"/>} />
           <Route path='/home' element={<Home/>} />
           <Route path='/plant-categories' element={<PlantCategories/>}/>
+          <Route path='/plants' element={<Plants/>}/>
+          <Route path='/login' element={<LoginForm/>}/>
+          <Route path='/register' element={<RegisterForm/>}/>
         </Routes>
         <Footer />
       </main>
