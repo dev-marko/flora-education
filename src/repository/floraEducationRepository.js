@@ -7,9 +7,12 @@ const FloraService = {
     },
 
     fetchPlantsByCategory: (category) => {
-        return axios.get(`/plant?query=${category}`)
+        return axios.get(`/plant?query=${category}`);
+    },
+
+    fetchPlantById: (plantId) => {
+        return axios.get(`/plant/${plantId}`);
     }
-    
 }
 
 export default FloraService;

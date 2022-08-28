@@ -7,6 +7,7 @@ import PlantCategories from '../Plants/PlantCategories';
 import Plants from '../Plants/Plants';
 import LoginForm from '../Auth/LoginForm';
 import RegisterForm from '../Auth/RegisterForm';
+import Plant from '../Plants/Plant';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/plants' element={<Plants/>}/>
           <Route path='/login' element={<LoginForm/>}/>
           <Route path='/register' element={<RegisterForm/>}/>
+          <Route path='/plants/:plantId' element={<Plant/>}/>
         </Routes>
         <Footer />
       </main>
