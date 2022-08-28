@@ -63,7 +63,7 @@ function Plant() {
                     <div>
                         <p className="fs-6 align-middle">
                             Тестирајте го вашето знаење на темата со краток квиз!
-                            <a className="btn btn-success ms-3">Мини-квиз</a>
+                            <a className="btn btn-success ms-3" href={`/mini-quiz/${plant.id}`}>Мини-квиз</a>
                         </p>
                     </div>
                 </div>

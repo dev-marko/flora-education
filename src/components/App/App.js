@@ -8,6 +8,7 @@ import Plants from '../Plants/Plants';
 import LoginForm from '../Auth/LoginForm';
 import RegisterForm from '../Auth/RegisterForm';
 import Plant from '../Plants/Plant';
+import Quiz from '../Quiz/Quiz';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path='/login' element={<LoginForm/>}/>
           <Route path='/register' element={<RegisterForm/>}/>
           <Route path='/plants/:plantId' element={<Plant/>}/>
+          <Route path='/mini-quiz/:plantId' element={<Quiz/>}/>
         </Routes>
         <Footer />
       </main>
