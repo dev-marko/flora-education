@@ -11,7 +11,7 @@ function Quiz() {
     const params = useParams();
     const plantId = params.plantId;
     const navigate = useNavigate();
-    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('username');
     const [miniQuiz, setMiniQuiz] = useState();
     const [gameState, setGameState] = useState("quiz");
     const [score, setScore] = useState(0);
@@ -19,7 +19,7 @@ function Quiz() {
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        if (token === null) {
+        if (username === null) {
             navigate('/login');
             return;
         }
@@ -29,18 +29,22 @@ function Quiz() {
                 setLoaded(true);
             })
 
-    }, [token, navigate, loaded, plantId]);
+    }, []);
+
+    useEffect(() => {
+        if (gameState === "endScreenPassed") {
+            FloraService.addBadge(username, miniQuiz.plant.name);
+        }
+    }, [gameState]);
 
     return (
-
         <div>
-            <QuizContext.Provider value={{ gameState, setGameState, score, setScore, questionsLength, setQuestionsLength, miniQuiz, setMiniQuiz }}>
+            <QuizContext.Provider value={{ gameState, setGameState, score, setScore, questionsLength, setQuestionsLength, miniQuiz, setMiniQuiz}}>
                 {gameState === "quiz" && loaded && <QuizQuestions miniQuiz={miniQuiz}/>}
                 {gameState === "endScreenPassed" && <EndScreenPassed />}
                 {gameState === "endScreenFailed" && <EndScreenFailed />}
             </QuizContext.Provider>
         </div>
-
     );
 }
 

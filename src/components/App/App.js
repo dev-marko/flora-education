@@ -9,25 +9,29 @@ import LoginForm from '../Auth/LoginForm';
 import RegisterForm from '../Auth/RegisterForm';
 import Plant from '../Plants/Plant';
 import Quiz from '../Quiz/Quiz';
-
+import MyProfile from '../MyProfile/MyProfile';
+import UserProvider from '../../providers/userProvider';
 
 function App() {
   return (
     <Router>
-      <main>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Navigate replace to="/home"/>} />
-          <Route path='/home' element={<Home/>} />
-          <Route path='/plant-categories' element={<PlantCategories/>}/>
-          <Route path='/plants' element={<Plants/>}/>
-          <Route path='/login' element={<LoginForm/>}/>
-          <Route path='/register' element={<RegisterForm/>}/>
-          <Route path='/plants/:plantId' element={<Plant/>}/>
-          <Route path='/mini-quiz/:plantId' element={<Quiz/>}/>
-        </Routes>
-        <Footer />
-      </main>
+        <UserProvider>
+          <main>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Navigate replace to="/home"/>} />
+              <Route path='/home' element={<Home/>} />
+              <Route path='/plant-categories' element={<PlantCategories/>}/>
+              <Route path='/plants' element={<Plants/>}/>
+              <Route path='/login' element={<LoginForm/>}/>
+              <Route path='/register' element={<RegisterForm/>}/>
+              <Route path='/plants/:plantId' element={<Plant/>}/>
+              <Route path='/mini-quiz/:plantId' element={<Quiz/>}/>
+              <Route path='/my-profile' element={<MyProfile/>}/>
+            </Routes>
+            <Footer />
+          </main>
+        </UserProvider>
     </Router>
   );
 }

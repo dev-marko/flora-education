@@ -21,23 +21,23 @@ function RegisterForm() {
             <form className="col-lg-4 p-5 rounded shadow-sm" style={{ backgroundColor: "#C9F0B0" }} onSubmit={handleRegister}>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" required onChange={(event) => setEmail(event.target.value)}/>
+                    <input autoComplete="off" type="email" class="form-control" id="email" required onChange={(event) => setEmail(event.target.value)}/>
                 </div>
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" required onChange={(event) => setUsername(event.target.value)}/>
+                    <input autoComplete="off" type="text" class="form-control" id="username" required onChange={(event) => setUsername(event.target.value)}/>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" required onChange={(event) => setPassword(event.target.value)}/>
+                    <input autoComplete="off" type="password" class="form-control" id="password" required onChange={(event) => setPassword(event.target.value)}/>
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" required onChange={(event) => setName(event.target.value)}/>
+                    <input autoComplete="off" type="text" class="form-control" id="name" required onChange={(event) => setName(event.target.value)}/>
                 </div>
                 <div class="mb-3">
                     <label for="surname" class="form-label">Surname</label>
-                    <input type="text" class="form-control" id="surname" required onChange={(event) => setSurname(event.target.value)}/>
+                    <input autoComplete="off" type="text" class="form-control" id="surname" required onChange={(event) => setSurname(event.target.value)}/>
                 </div>
                 <div class="mb-3 text-danger">
                     <small>*All fields are required.</small>

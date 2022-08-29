@@ -8,11 +8,13 @@ function Plant() {
     const plantId = params.plantId;
     const [plant, setPlant] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [text, setText] = useState();
 
     useEffect(() => {
         FloraService.fetchPlantById(plantId)
             .then((data) => {
                 setPlant(data.data);
+                setText(data.data.description);
                 setLoaded(true);
             })
     }, [plantId])
@@ -28,10 +30,10 @@ function Plant() {
                         loaded ? (<img className="img-fluid rounded" src={require(`./images/plants/${plant.id}.jpg`)} alt="{plant.name}" />) : null
                     }
                     <div class="pt-2 hstack gap-3 justify-content-center">
-                        <a href="#" className="btn btn-success">Опис</a>
-                        <a href="#" className="btn btn-success">Предуслови</a>
-                        <a href="#" className="btn btn-success">Садење</a>
-                        <a href="#" className="btn btn-success">Одржување</a>
+                        <button onClick={() => {setText(plant.description)}} className="btn btn-success">Опис</button>
+                        <button onClick={() => {setText(plant.predispositions)}} className="btn btn-success">Предуслови</button>
+                        <button onClick={() => {setText(plant.planting)}} className="btn btn-success">Садење</button>
+                        <button onClick={() => {setText(plant.maintenance)}} className="btn btn-success">Одржување</button>
                     </div>
                 </div>
                 <div className="col p-4">
@@ -40,13 +42,7 @@ function Plant() {
                     </h2>
                     <hr />
                     <p className='p-2 text-start fs-5'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Id leo in vitae turpis. Scelerisque eu ultrices vitae auctor eu augue ut lectus arcu. Diam sollicitudin tempor id eu.
-                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames. Quis risus sed vulputate odio.
-                        Scelerisque purus semper eget duis at. Blandit turpis cursus in hac. Adipiscing diam donec adipiscing tristique risus.
-                        Duis convallis convallis tellus id interdum velit laoreet. Malesuada pellentesque elit eget gravida.
-                        Tincidunt vitae semper quis lectus nulla. Lorem mollis aliquam ut porttitor leo a diam.
-                        Vivamus at augue eget arcu dictum varius duis at. Ornare massa eget egestas purus viverra accumsan in nisl.
+                        {text}
                     </p>
                 </div>
             </div>

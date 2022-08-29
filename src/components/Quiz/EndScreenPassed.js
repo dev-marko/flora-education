@@ -2,13 +2,17 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { QuizContext } from "../Helpers/Contexts";
 
-function EndScreen() {
+function EndScreenPassed() {
     
     const navigate = useNavigate();
-    const {miniQuiz, questionsLength, score, setScore, setGameState} = useContext(QuizContext);
+    const {miniQuiz, questionsLength, score} = useContext(QuizContext);
 
     const handlePlantRedirect = () => {
         navigate(`/plants/${miniQuiz.plant.id}`);
+    }
+
+    const handleMyProfileRedirect = () => {
+        navigate('/my-profile');
     }
 
     return (
@@ -21,7 +25,7 @@ function EndScreen() {
                     <p className="text-center">Како награда за вашиот труд, на вашиот профил е додаден "<b>{miniQuiz.plant.name}</b>" беџ.</p>
                     <div className="hstack mt-5 justify-content-center gap-3">
                         <button onClick={handlePlantRedirect} className="btn btn-danger">Излез</button>
-                        <button className="btn btn-success">Мој профил</button>
+                        <button onClick={handleMyProfileRedirect} className="btn btn-success">Мој профил</button>
                     </div>
                 </div>
             </div>
@@ -29,4 +33,4 @@ function EndScreen() {
     );
 }
 
-export default EndScreen;
+export default EndScreenPassed;

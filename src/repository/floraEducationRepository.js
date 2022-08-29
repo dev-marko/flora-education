@@ -1,21 +1,5 @@
 import axios from '../custom-axios/axios'
 
-axios.interceptors.request.use(
-    async (config) => {
-        const token = localStorage.getItem("token");
-
-        if (token) {
-            config.headers = {
-                ...config.headers,
-                authorization: `Bearer ${token}`,
-            };
-        }
-
-        return config;
-    },
-    (error) => Promise.reject(error)
-);
-
 const FloraService = {
 
     fetchPlantCategories: () => {
@@ -32,6 +16,17 @@ const FloraService = {
 
     fetchMiniQuizByPlantId: (plantId) => {
         return axios.get(`/plant/${plantId}/mini-quiz`);
+    },
+
+    fetchUser: (username) => {
+        return axios.get(`/account/me?username=${username}`);
+    },
+
+    addBadge: async (username, badgeName) => {
+        return axios.post("/badge/add-to-user", {
+            "Username": username,
+            "BadgeName": badgeName
+        });
     },
 
     login: (username, password) => {
@@ -53,7 +48,7 @@ const FloraService = {
             "Password": password,
             "Name": name,
             "Surname": surname
-        }).then((response) => {
+        }).then(() => {
             return window.location.href = '/login';
         })
     }
