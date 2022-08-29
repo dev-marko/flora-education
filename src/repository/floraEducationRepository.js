@@ -30,6 +30,10 @@ const FloraService = {
         return axios.get(`/plant/${plantId}`);
     },
 
+    fetchMiniQuizByPlantId: (plantId) => {
+        return axios.get(`/plant/${plantId}/mini-quiz`);
+    },
+
     login: (username, password) => {
         return axios.post("/account/login", {
                 "Username": username,
