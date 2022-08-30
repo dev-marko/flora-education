@@ -11,7 +11,9 @@ import Plant from '../Plants/Plant';
 import Quiz from '../Quiz/Quiz';
 import MyProfile from '../MyProfile/MyProfile';
 import UserProvider from '../../providers/userProvider';
-import Breadcrumbs from '../Navbar/Breadcrumbs';
+import Documentation from '../Documentation/Documentation';
+import AboutUs from '../../About Us/AboutUs';
+import Contact from '../../Contact/Contact';
 
 function App() {
   return (
@@ -19,7 +21,6 @@ function App() {
         <UserProvider>
           <main>
             <Navbar />
-            {/* <Breadcrumbs/> */}
             <Routes>
               <Route path="/" element={<Navigate replace to="/home"/>} />
               <Route path='/home' element={<Home/>} />
@@ -30,6 +31,9 @@ function App() {
               <Route path='/plants/:plantId' element={<Plant/>}/>
               <Route path='/mini-quiz/:plantId' element={<Quiz/>}/>
               <Route path='/my-profile' element={<MyProfile/>}/>
+              <Route path='/documentation' element={<Documentation/>}/>
+              <Route path='/about-us' element={<AboutUs/>}/>
+              <Route path='/contact' element={<Contact/>}/>
             </Routes>
             <Footer />
           </main>

@@ -1,6 +1,6 @@
 function Home() {
     return (
-        <div className="container" style={{ marginTop: '100px' }}>
+        <div className="container" style={{ marginTop: '100px', paddingBottom: '35px' }}>
             <div className="row rounded" style={{ backgroundColor: "#C9F0B0" }}>
                 <div className="col-lg-6 col-md-6 p-4">
                     <img className="img-fluid" src={require('./images/lady-holding-plant.jpg')} alt="lady holding a plant" />

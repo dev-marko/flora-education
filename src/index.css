@@ -5,8 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #EEFFE3;
- /* ! this might be a bad idea !*/
+  background-color: #EEFFE3; 
 }
 
 code {
@@ -17,4 +16,9 @@ code {
 html, body {
   width: 100%;
   height: 100%;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
 }

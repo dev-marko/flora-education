@@ -19,8 +19,10 @@ function Plant() {
             })
     }, [plantId])
 
+    console.log(plant);
+
     return (
-        <div className="container" style={{ marginTop: '100px' }}>
+        <div className="container" style={{ marginTop: '100px', paddingBottom: '35px' }}>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a className='text-dark' style={{ textDecoration: "none" }} href="/home">Дома</a></li>
@@ -66,21 +68,40 @@ function Plant() {
                                 </div>
                             </div>
                             <div className="row rounded mt-4" style={{ backgroundColor: "#C9F0B0" }}>
-                                <div className="col p-4">
-                                    <form>
-                                        <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                                            <label for="floatingTextarea">Comments</label>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div className="col p-4 text-center">
-                                    <div>
-                                        <p className="fs-6 align-middle">
+                                <div className="col p-4 justify-content-center">
+                                    <div className="hstack justify-content-center gap-3">
+                                        <p className="fs-5 m-0">
                                             Тестирајте го вашето знаење на темата со краток квиз!
-                                            <a className="btn btn-success ms-3" href={`/mini-quiz/${plant.id}`}>Мини-квиз</a>
                                         </p>
+                                        <a className="btn btn-info" href={`/mini-quiz/${plant.id}`}>Мини-квиз <i class="bi bi-patch-question"></i></a>
                                     </div>
+                                </div>
+                            </div>
+                            <div className="row rounded mt-4" style={{ backgroundColor: "#C9F0B0" }}>
+                                <div className="col p-4 justify-content-center">
+                                    <h2><i class="bi bi-chat-square-text"></i> Коментари:</h2>
+                                    {
+                                        plant.comments.map((term) => {
+                                            return (
+                                                <div className="m-3 p-4 rounded-pill bg-light">
+                                                    <p className="p-3 m-0">{term.author.username} коментирал:</p>
+                                                    <hr className="m-0"/>
+                                                    <p className="p-3 m-0">{term.content}</p>
+                                                </div>
+                                            );
+                                        })
+                                    }
+                                </div>
+                            </div>
+                            <div className="row rounded mt-4" style={{ backgroundColor: "#C9F0B0", marginBottom: "50px" }}>
+                                <div className="col p-4">
+                                    <form className="hstack justify-content-center gap-3">
+                                        <div class="form-floating w-75">
+                                            <textarea class="form-control" placeholder="Напишете коментар..." id="comment"></textarea>
+                                            <label for="comment">Коментар</label>
+                                        </div>
+                                        <button className="btn btn-primary">Коментирај <i class="bi bi-send"></i></button>
+                                    </form>
                                 </div>
                             </div>
                         </>

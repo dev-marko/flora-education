@@ -30,10 +30,13 @@ function Navbar() {
                             <a className="nav-link" href="/plant-categories">Сите растенија</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">За нас</a>
+                            <a className="nav-link" href="/about-us">За нас</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Контакт</a>
+                            <a className="nav-link" href="/contact">Контакт</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/documentation">Упатство</a>
                         </li>
                         {
                             isLoggedIn ?

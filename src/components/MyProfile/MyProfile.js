@@ -21,7 +21,7 @@ function MyProfile() {
             {
                 loaded ?
                     (
-                        <div className="container" style={{ marginTop: '100px' }}>
+                        <div className="container" style={{ marginTop: '100px', paddingBottom: '35px' }}>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a className='text-dark' style={{ textDecoration: "none" }} href="/home">Дома</a></li>

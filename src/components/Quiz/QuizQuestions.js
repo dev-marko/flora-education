@@ -66,40 +66,40 @@ function QuizQuestions({ miniQuiz }) {
                     </h2>
                     <div className="mt-5 ms-5">
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="answer" id="answer1" onChange={() => setOptionChosen(0)} />
+                            <input className="form-check-input" type="radio" name="answer" id="answer1" value={0} onChange={() => setOptionChosen(0)} required/>
                             <label className="form-check-label" htmlFor="answer1">
                                 {questions[currQuestion].answers[0]}
                             </label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="answer" id="answer2" onChange={() => setOptionChosen(1)} />
+                            <input className="form-check-input" type="radio" name="answer" id="answer2" value={1} onChange={() => setOptionChosen(1)}/>
                             <label className="form-check-label" htmlFor="answer2">
                                 {questions[currQuestion].answers[1]}
                             </label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="answer" id="answer3" onChange={() => setOptionChosen(2)} />
+                            <input className="form-check-input" type="radio" name="answer" id="answer3" value={2} onChange={() => setOptionChosen(2)}/>
                             <label className="form-check-label" htmlFor="answer3">
                                 {questions[currQuestion].answers[2]}
                             </label>
                         </div><div className="form-check">
-                            <input className="form-check-input" type="radio" name="answer" id="answer4" onChange={() => setOptionChosen(3)} />
+                            <input className="form-check-input" type="radio" name="answer" id="answer4" value={3} onChange={() => setOptionChosen(3)}/>
                             <label className="form-check-label" htmlFor="answer4">
                                 {questions[currQuestion].answers[3]}
                             </label>
                         </div>
                     </div>
                     <div className="hstack mt-5 gap-5 justify-content-center">
-                        <button className="btn btn-danger" onClick={exitQuiz}>Откажи</button>
-                        <button className="btn btn-secondary" onClick={previousQuestion}>Претходно прашање</button>
+                        <button className="btn btn-danger" onClick={exitQuiz}>Откажи <i class="bi bi-x-circle"></i></button>
+                        <button className="btn btn-secondary" onClick={previousQuestion}><i class="bi bi-arrow-left-circle"></i> Претходно прашање</button>
                         {
                             currQuestion === questions.length - 1 ?
                                 (
-                                    <button className="btn btn-success" onClick={finishQuiz}>Заврши квиз</button>
+                                    <button className="btn btn-success" onClick={finishQuiz}>Заврши квиз <i class="bi bi-check-circle"></i></button>
                                 )
                                 :
                                 (
-                                    <button className="btn btn-primary" onClick={nextQuestion}>Следно прашање</button>
+                                    <button className="btn btn-primary" onClick={nextQuestion}>Следно прашање <i class="bi bi-arrow-right-circle"></i></button>
                                 )
                         }
                     </div>
