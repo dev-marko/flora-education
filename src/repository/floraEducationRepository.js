@@ -35,7 +35,8 @@ const FloraService = {
                 "Password": password
             }).catch((error) => {
                 if (error.response.status === 404) {
-                    return window.location.href = '/login';
+                    // return window.location.href = '/login';
+                    return undefined;
                 }
                 return Promise.reject(error);
             });

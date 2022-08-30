@@ -11,6 +11,7 @@ import Plant from '../Plants/Plant';
 import Quiz from '../Quiz/Quiz';
 import MyProfile from '../MyProfile/MyProfile';
 import UserProvider from '../../providers/userProvider';
+import Breadcrumbs from '../Navbar/Breadcrumbs';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <UserProvider>
           <main>
             <Navbar />
+            {/* <Breadcrumbs/> */}
             <Routes>
               <Route path="/" element={<Navigate replace to="/home"/>} />
               <Route path='/home' element={<Home/>} />

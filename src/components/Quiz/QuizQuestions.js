@@ -9,6 +9,11 @@ function QuizQuestions({ miniQuiz }) {
 
     const { score, setScore, setGameState, setQuestionsLength } = useContext(QuizContext);
 
+    const exitQuiz = () => {
+        setScore(0);
+        setGameState("exitQuiz");
+    }
+
     const nextQuestion = () => {
         if (questions[currQuestion].correctAnswerIndex === optionChosen) {
             setScore(score + 1);
@@ -16,6 +21,12 @@ function QuizQuestions({ miniQuiz }) {
 
         setCurrQuestion(currQuestion + 1);
     };
+
+    const previousQuestion = () => {
+        if (currQuestion !== 0) {
+            setCurrQuestion(currQuestion - 1);
+        }
+    }
 
     const finishQuiz = () => {
         if (questions[currQuestion].correctAnswerIndex === optionChosen) {
@@ -78,7 +89,9 @@ function QuizQuestions({ miniQuiz }) {
                             </label>
                         </div>
                     </div>
-                    <div className="text-end me-3">
+                    <div className="hstack mt-5 gap-5 justify-content-center">
+                        <button className="btn btn-danger" onClick={exitQuiz}>Откажи</button>
+                        <button className="btn btn-secondary" onClick={previousQuestion}>Претходно прашање</button>
                         {
                             currQuestion === questions.length - 1 ?
                                 (
@@ -86,7 +99,7 @@ function QuizQuestions({ miniQuiz }) {
                                 )
                                 :
                                 (
-                                    <button className="btn btn-success" onClick={nextQuestion}>Следно прашање</button>
+                                    <button className="btn btn-primary" onClick={nextQuestion}>Следно прашање</button>
                                 )
                         }
                     </div>

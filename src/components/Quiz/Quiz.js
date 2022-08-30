@@ -16,7 +16,7 @@ function Quiz() {
     const [gameState, setGameState] = useState("quiz");
     const [score, setScore] = useState(0);
     const [questionsLength, setQuestionsLength] = useState(0);
-    const [loaded, setLoaded] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (username === null) {
@@ -26,7 +26,7 @@ function Quiz() {
         FloraService.fetchMiniQuizByPlantId(plantId)
             .then((data) => {
                 setMiniQuiz(data.data);
-                setLoaded(true);
+                setLoading(false);
             })
 
     }, []);
@@ -39,11 +39,25 @@ function Quiz() {
 
     return (
         <div>
-            <QuizContext.Provider value={{ gameState, setGameState, score, setScore, questionsLength, setQuestionsLength, miniQuiz, setMiniQuiz}}>
-                {gameState === "quiz" && loaded && <QuizQuestions miniQuiz={miniQuiz}/>}
-                {gameState === "endScreenPassed" && <EndScreenPassed />}
-                {gameState === "endScreenFailed" && <EndScreenFailed />}
-            </QuizContext.Provider>
+            {
+                loading ?
+                (
+                    <div className="row justify-content-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                )
+                :
+                (
+                    <QuizContext.Provider value={{ gameState, setGameState, score, setScore, questionsLength, setQuestionsLength, miniQuiz, setMiniQuiz}}>
+                        {gameState === "quiz" && <QuizQuestions miniQuiz={miniQuiz}/>}
+                        {gameState === "endScreenPassed" && <EndScreenPassed />}
+                        {gameState === "endScreenFailed" && <EndScreenFailed />}
+                        {gameState === "exitQuiz" && navigate(`/plants/${plantId}`)}
+                    </QuizContext.Provider>
+                )
+            }
         </div>
     );
 }

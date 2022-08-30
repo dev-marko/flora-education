@@ -1,7 +1,7 @@
 
 function PlantCard({term, image}) {
     return (
-        <div className='col-3 m-3 border border-success rounded shadow' style={{ backgroundColor: "#C9F0B0" }}>
+        <div className='col-lg-3 col-md-5 m-3 border border-success rounded shadow' style={{ backgroundColor: "#C9F0B0" }}>
             <a href={`/plants/${term.id}`} style={{textDecoration: "none", color: "black"}}>
                 <img className='img-fluid w-50 p-3' src={require(`${image}`)} alt={term} />
                 <h4>{term.name}</h4>

@@ -8,10 +8,10 @@ function MyProfile() {
 
     useEffect(() => {
         FloraService.fetchUser(localStorage.getItem('username'))
-        .then((data) => {
-            setUser(data.data);
-            setLoaded(true);
-        });
+            .then((data) => {
+                setUser(data.data);
+                setLoaded(true);
+            });
     }, []);
 
     console.log(user);
@@ -20,16 +20,22 @@ function MyProfile() {
         <div>
             {
                 loaded ?
-                (    
-                    <div className="container" style={{ marginTop: '100px' }}>
-                        <div className="row justify-content-center">
+                    (
+                        <div className="container" style={{ marginTop: '100px' }}>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a className='text-dark' style={{ textDecoration: "none" }} href="/home">Дома</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Мој профил</li>
+                                </ol>
+                            </nav>
+                            <div className="row justify-content-center">
                                 <div className="col-md-4 p-4 rounded" style={{ backgroundColor: "#C9F0B0" }}>
                                     <h2 className="text-center mb-5">Mој профил</h2>
-                                    <p><b>Email</b>: {user.email}</p>
-                                    <p><b>Username</b>: {user.username}</p>
-                                    <p><b>Name</b>: {user.name}</p>
-                                    <p><b>Surname</b>: {user.surname}</p>
-                                    <p><b>Badges</b>:</p>
+                                    <p><b>Е-пошта</b>: {user.email}</p>
+                                    <p><b>Корисничко име</b>: {user.username}</p>
+                                    <p><b>Име</b>: {user.name}</p>
+                                    <p><b>Презиме</b>: {user.surname}</p>
+                                    <p><b>Беџови</b>:</p>
                                     <ul>
                                         {
                                             user.badges.map((term) => {
@@ -40,15 +46,15 @@ function MyProfile() {
                                         }
                                     </ul>
                                 </div>
+                            </div>
                         </div>
-                    </div>
-                )
-                :
-                (
-                    <div className="spinner">
+                    )
+                    :
+                    (
+                        <div className="spinner">
 
-                    </div>
-                )
+                        </div>
+                    )
             }
         </div>
     );
