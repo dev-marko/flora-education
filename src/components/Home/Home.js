@@ -19,7 +19,7 @@ function Home() {
                     </p>
                 </div>
             </div>
-            <div className='row mt-4 gap-3 d-flex justify-content-between text-center'>
+            <div className='row my-4 gap-3 d-flex justify-content-between text-center'>
                 <div className='col-lg-3 col-md-5 rounded' style={{ backgroundColor: "#C9F0B0" }}>
                     <img className='img-fluid w-50 p-2' src={require('./images/garden-showel.png')} alt="garden shovel" />
                     <p className='p-2'>Научете да садите голем број на разновидни растенија!</p>

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import FloraService from "../../repository/floraEducationRepository";
 
 function Plant() {
 
     const params = useParams();
+    const navigate = useNavigate();
     const plantId = params.plantId;
     const [plant, setPlant] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -19,7 +20,34 @@ function Plant() {
             })
     }, [plantId])
 
-    console.log(plant);
+
+    const like = async () => {
+        const username = localStorage.getItem('username');
+
+        // if (username === null) {
+        //     navigate('/login');
+        //     return;
+        // }
+
+        //await FloraService.likePlant(username, plantId);
+
+        return (
+                                            
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Liked!</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Successfully added plant to your liked plants!
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                            
+        );
+    }
 
     return (
         <div className="container" style={{ marginTop: '100px', paddingBottom: '35px' }}>
@@ -51,6 +79,9 @@ function Plant() {
                                     <hr />
                                     <img className="img-fluid d-block mx-auto rounded w-75" src={require(`./images/plants/${plant.id}.jpg`)} alt="{plant.name}" />
                                     <div class="pt-2 hstack gap-3 justify-content-center">
+                                        <button onClick={() => like()} type="button" class="btn btn-danger">
+                                            <i class="bi bi-heart"></i> Like
+                                        </button>
                                         <button onClick={() => { setText(plant.description) }} className="btn btn-success">Опис</button>
                                         <button onClick={() => { setText(plant.predispositions) }} className="btn btn-success">Предуслови</button>
                                         <button onClick={() => { setText(plant.planting) }} className="btn btn-success">Садење</button>
@@ -85,7 +116,7 @@ function Plant() {
                                             return (
                                                 <div className="m-3 p-4 rounded-pill bg-light">
                                                     <p className="p-3 m-0">{term.author.username} коментирал:</p>
-                                                    <hr className="m-0"/>
+                                                    <hr className="m-0" />
                                                     <p className="p-3 m-0">{term.content}</p>
                                                 </div>
                                             );

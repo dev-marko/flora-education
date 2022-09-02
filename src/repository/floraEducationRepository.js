@@ -29,13 +29,19 @@ const FloraService = {
         });
     },
 
+    likePlant: async (username, plantId) => {
+        return axios.post("/plant/add-to-liked", {
+          "Username": username,
+          "PlantId": plantId
+        });
+    },
+
     login: (username, password) => {
         return axios.post("/account/login", {
                 "Username": username,
                 "Password": password
             }).catch((error) => {
                 if (error.response.status === 404) {
-                    // return window.location.href = '/login';
                     return undefined;
                 }
                 return Promise.reject(error);
