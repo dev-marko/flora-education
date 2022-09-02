@@ -35,12 +35,22 @@ function MyProfile() {
                                     <p><b>Корисничко име</b>: {user.username}</p>
                                     <p><b>Име</b>: {user.name}</p>
                                     <p><b>Презиме</b>: {user.surname}</p>
-                                    <p><b>Беџови</b>:</p>
+                                    <p className="m-0"><b>Беџови</b>:</p>
                                     <ul>
                                         {
                                             user.badges.map((term) => {
                                                 return (
                                                     <li>{term.badge.name}</li>
+                                                );
+                                            })
+                                        }
+                                    </ul>
+                                    <p className="m-0"><b>Омилени растенија:</b></p>
+                                    <ul>
+                                        {
+                                            user.likedPlants.map((term) => {
+                                                return (
+                                                    <li>{term.plant.name}</li>
                                                 );
                                             })
                                         }

@@ -20,33 +20,31 @@ function Plant() {
             })
     }, [plantId])
 
-
     const like = async () => {
         const username = localStorage.getItem('username');
 
-        // if (username === null) {
-        //     navigate('/login');
-        //     return;
-        // }
+        if (username === null) {
+            navigate('/login');
+            return;
+        }
 
-        //await FloraService.likePlant(username, plantId);
+        await FloraService.likePlant(username, plantId);
 
-        return (
-                                            
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Liked!</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Successfully added plant to your liked plants!
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                            
-        );
+        const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+
+        const alert = (message) => {
+            const wrapper = document.createElement('div')
+            wrapper.innerHTML = [
+                `<div class="alert alert-success alert-dismissible" role="alert">`,
+                `   <div>${message}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('')
+
+            alertPlaceholder.append(wrapper)
+        }
+
+        alert('<i class="bi bi-check-circle"></i> Added to liked plants.');
     }
 
     return (
@@ -59,6 +57,7 @@ function Plant() {
                     <li class="breadcrumb-item active" aria-current="page">{plant.name}</li>
                 </ol>
             </nav>
+            <div id="liveAlertPlaceholder"></div>
             {
                 loading ?
                     (
@@ -71,16 +70,21 @@ function Plant() {
                     :
                     (
                         <>
-                            <div className="row rounded" style={{ backgroundColor: "#C9F0B0" }}>
-                                <div className="col p-4">
+                            <div className="row rounded-top" style={{ backgroundColor: "#C9F0B0" }}>
+                                <div className="col-lg-12 col-md-5 ps-3 pt-3 m-0">
+                                    <button onClick={() => {navigate(`/plants?query=${plant.type}`)}} className="btn btn-success"><i class="bi bi-arrow-left-circle"></i> Назад</button>
+                                </div>
+                            </div>
+                            <div className="row rounded-bottom" style={{ backgroundColor: "#C9F0B0" }}>
+                                <div className="col-lg-6 col-md-6 px-4 pb-4">
                                     <h2 className='p-2 text-center'>
                                         {plant.name}
                                     </h2>
                                     <hr />
                                     <img className="img-fluid d-block mx-auto rounded w-75" src={require(`./images/plants/${plant.id}.jpg`)} alt="{plant.name}" />
-                                    <div class="pt-2 hstack gap-3 justify-content-center">
+                                    <div class="d-flex pt-2 hstack gap-3 justify-content-center flex-xl-row flex-lg-column flex-md-column flex-sm-column flex-column">
                                         <button onClick={() => like()} type="button" class="btn btn-danger">
-                                            <i class="bi bi-heart"></i> Like
+                                            <i class="bi bi-heart"></i> Ми се допаѓа
                                         </button>
                                         <button onClick={() => { setText(plant.description) }} className="btn btn-success">Опис</button>
                                         <button onClick={() => { setText(plant.predispositions) }} className="btn btn-success">Предуслови</button>
@@ -88,7 +92,7 @@ function Plant() {
                                         <button onClick={() => { setText(plant.maintenance) }} className="btn btn-success">Одржување</button>
                                     </div>
                                 </div>
-                                <div className="col p-4">
+                                <div className="col-lg-6 col-md-6 px-4 pb-4">
                                     <h2 className='p-2 text-center'>
                                         Краток опис
                                     </h2>
@@ -99,7 +103,7 @@ function Plant() {
                                 </div>
                             </div>
                             <div className="row rounded mt-4" style={{ backgroundColor: "#C9F0B0" }}>
-                                <div className="col p-4 justify-content-center">
+                                <div className="col-lg-12 col-md-5 p-4 justify-content-center">
                                     <div className="hstack justify-content-center gap-3">
                                         <p className="fs-5 m-0">
                                             Тестирајте го вашето знаење на темата со краток квиз!
@@ -109,7 +113,7 @@ function Plant() {
                                 </div>
                             </div>
                             <div className="row rounded mt-4" style={{ backgroundColor: "#C9F0B0" }}>
-                                <div className="col p-4 justify-content-center">
+                                <div className="col-lg-12 col-md-5 p-4 justify-content-center">
                                     <h2><i class="bi bi-chat-square-text"></i> Коментари:</h2>
                                     {
                                         plant.comments.map((term) => {
@@ -125,7 +129,7 @@ function Plant() {
                                 </div>
                             </div>
                             <div className="row rounded mt-4" style={{ backgroundColor: "#C9F0B0", marginBottom: "50px" }}>
-                                <div className="col p-4">
+                                <div className="col-lg-12 col-md-5 p-4">
                                     <form className="hstack justify-content-center gap-3">
                                         <div class="form-floating w-75">
                                             <textarea class="form-control" placeholder="Напишете коментар..." id="comment"></textarea>
