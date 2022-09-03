@@ -1,9 +1,10 @@
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import FloraService from '../../repository/floraEducationRepository';
 import PlantCard from './PlantCard';
 
 function Plants() {
+    const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const category = searchParams.get('query');
 
@@ -38,7 +39,13 @@ function Plants() {
                     )
                     :
                     (
-                        <div className="row mt-5 justify-content-center text-center">
+                    <>
+                        <div className="row">
+                            <div className="col-lg-12 col-md-5 ps-3 pt-3 m-0">
+                                <button onClick={() => {navigate(`/plant-categories`)}} className="btn btn-success"><i class="bi bi-arrow-left-circle"></i> Назад</button>
+                            </div>
+                        </div>
+                        <div className="row mt-3 justify-content-center text-center">
                             <h2>{category}</h2>
                             {
                                 category !== "Цвеќиња" ?
@@ -60,6 +67,7 @@ function Plants() {
                                     )
                             }
                         </div>
+                    </>
                     )
             }
         </div>

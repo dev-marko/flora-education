@@ -12,8 +12,8 @@ import Quiz from '../Quiz/Quiz';
 import MyProfile from '../MyProfile/MyProfile';
 import UserProvider from '../../providers/userProvider';
 import Documentation from '../Documentation/Documentation';
-import AboutUs from '../../About Us/AboutUs';
-import Contact from '../../Contact/Contact';
+import AboutUs from '../About Us/AboutUs';
+import Contact from '../Contact/Contact';
 
 function App() {
   return (

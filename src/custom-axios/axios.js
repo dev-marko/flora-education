@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create(
     {
-        baseURL: 'https://localhost:44364/api',
+        baseURL: 'https://flora-education-api.herokuapp.com/api',
         headers : {
             'Access-Control-Allow-Origin': '*'
         }

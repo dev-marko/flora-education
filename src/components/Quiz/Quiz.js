@@ -4,7 +4,7 @@ import FloraService from "../../repository/floraEducationRepository";
 import QuizQuestions from "./QuizQuestions";
 import EndScreenPassed from "./EndScreenPassed";
 import EndScreenFailed from "./EndScreenFailed";
-import { QuizContext } from "../Helpers/Contexts"
+import { QuizContext } from "../../providers/quizProvider";
 
 function Quiz() {
 

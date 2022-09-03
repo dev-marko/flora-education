@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { QuizContext } from "../Helpers/Contexts";
+import { QuizContext } from "../../providers/quizProvider";
 
 function EndScreenPassed() {
     

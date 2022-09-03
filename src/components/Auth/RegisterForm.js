@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FloraService from "../../repository/floraEducationRepository";
 
 function RegisterForm() {
@@ -9,11 +10,15 @@ function RegisterForm() {
     const [name, setName] = useState();
     const [surname, setSurname] = useState();
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
 
     const handleRegister = async (event) => {
         event.preventDefault();
-        FloraService.register(email, username, password, name, surname);
+        setLoading(true);
+        await FloraService.register(email, username, password, name, surname);
+        setLoading(false);
+        navigate("/login");
     }
 
     useEffect(() => {

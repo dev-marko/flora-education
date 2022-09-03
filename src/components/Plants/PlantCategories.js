@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import PlantCategoryCard from "./PlantCategoryCard";
 import FloraService from "../../repository/floraEducationRepository"
+import { useNavigate } from "react-router-dom";
 
 function PlantCategories() {
 
+    const navigate = useNavigate();
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -34,6 +36,12 @@ function PlantCategories() {
                     )
                     :
                     (
+                    <>
+                        <div className="row">
+                            <div className="col-lg-12 col-md-5 ps-3 pt-3 m-0">
+                                <button onClick={() => {navigate(`/home`)}} className="btn btn-success"><i class="bi bi-arrow-left-circle"></i> Назад</button>
+                            </div>
+                        </div>
                         <div className="row mt-5 justify-content-center text-center">
                             <h3>Категории</h3>
                             {
@@ -46,6 +54,7 @@ function PlantCategories() {
                                 })
                             }
                         </div>
+                    </>
                     )
             }
         </div>

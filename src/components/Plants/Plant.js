@@ -10,6 +10,8 @@ function Plant() {
     const [plant, setPlant] = useState([]);
     const [loading, setLoading] = useState(true);
     const [text, setText] = useState();
+    const [comment, setComment] = useState();
+    const username = localStorage.getItem('username');
 
     useEffect(() => {
         FloraService.fetchPlantById(plantId)
@@ -21,8 +23,6 @@ function Plant() {
     }, [plantId])
 
     const like = async () => {
-        const username = localStorage.getItem('username');
-
         if (username === null) {
             navigate('/login');
             return;
@@ -44,7 +44,16 @@ function Plant() {
             alertPlaceholder.append(wrapper)
         }
 
-        alert('<i class="bi bi-check-circle"></i> Added to liked plants.');
+        alert('<i class="bi bi-check-circle"></i> Успешно додадено во омилени растенија.');
+    }
+
+    const handleComment = async () => {
+        if (username === null) {
+            navigate('/login');
+            return;
+        }
+
+        await FloraService.addComment(plantId, username, comment);
     }
 
     return (
@@ -130,12 +139,11 @@ function Plant() {
                             </div>
                             <div className="row rounded mt-4" style={{ backgroundColor: "#C9F0B0", marginBottom: "50px" }}>
                                 <div className="col-lg-12 col-md-5 p-4">
-                                    <form className="hstack justify-content-center gap-3">
+                                    <form className="hstack justify-content-center gap-3" onSubmit={handleComment}>
                                         <div class="form-floating w-75">
-                                            <textarea class="form-control" placeholder="Напишете коментар..." id="comment"></textarea>
-                                            <label for="comment">Коментар</label>
+                                            <textarea class="form-control" placeholder="Напишете коментар..." id="comment" required onChange={(event) => setComment(event.target.value)}></textarea>
                                         </div>
-                                        <button className="btn btn-primary">Коментирај <i class="bi bi-send"></i></button>
+                                        <button type="submit" className="btn btn-primary">Коментирај <i class="bi bi-send"></i></button>
                                     </form>
                                 </div>
                             </div>

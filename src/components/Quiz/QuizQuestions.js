@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { QuizContext } from "../Helpers/Contexts";
+import { QuizContext } from "../../providers/quizProvider";
 
 function QuizQuestions({ miniQuiz }) {
     const questions = miniQuiz.questions;

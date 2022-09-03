@@ -36,6 +36,14 @@ const FloraService = {
         });
     },
 
+    addComment: async (plantId, username, content) => {
+        return axios.post(`/plant/${plantId}/add-comment`, {
+            "PlantId": plantId,
+            "Username": username,
+            "Content": content
+        });
+    },
+
     login: (username, password) => {
         return axios.post("/account/login", {
                 "Username": username,
@@ -55,9 +63,7 @@ const FloraService = {
             "Password": password,
             "Name": name,
             "Surname": surname
-        }).then(() => {
-            return window.location.href = '/login';
-        })
+        });
     }
 }
 
